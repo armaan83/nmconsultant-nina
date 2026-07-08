@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adriatic Ventures — Start Your Business in Croatia</title>
+
+    <!-- Google Fonts for a clean, modern look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <style>
+        /* ----- RESET & BASE ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #0b1a2f;
+            --deep-navy: #07101e;
+            --gold: #d4a74a;
+            --gold-light: #e8c97a;
+            --cream: #f5f0e8;
+            --white: #ffffff;
+            --light-gray: #f0ece4;
+            --medium-gray: #8a8a8a;
+            --shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 30px 80px rgba(0, 0, 0, 0.14);
+            --radius: 16px;
+            --transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--white);
+            color: var(--navy);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ----- BUTTONS ----- */
+        .btn {
+            display: inline-block;
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.3px;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--navy);
+            box-shadow: 0 8px 24px rgba(212, 167, 74, 0.3);
+        }
+        .btn-primary:hover {
+            background: var(--gold-light);
+            transform: translateY(-3px);
+            box-shadow: 0 14px 34px rgba(212, 167, 74, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--navy);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline-dark {
+            background: transparent;
+            color: var(--navy);
+            border: 2px solid var(--navy);
+        }
+        .btn-outline-dark:hover {
+            background: var(--navy);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* ----- HEADER / NAV ----- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 18px 0;
+            transition: var(--transition);
+            background: transparent;
+        }
+
+        header.scrolled {
+            background: rgba(11, 26, 47, 0.92);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+            padding: 12px 0;
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo span {
+            color: var(--gold);
+        }
+        .logo i {
+            font-size: 1.8rem;
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: var(--transition);
+        }
+        .nav-links a:hover {
+            color: var(--white);
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--gold);
+            color: var(--navy) !important;
+            padding: 10px 26px;
+            border-radius: 50px;
+            font-weight: 600 !important;
+        }
+        .nav-cta::after {
+            display: none !important;
+        }
+        .nav-cta:hover {
+            background: var(--gold-light) !important;
+            color: var(--navy) !important;
+            transform: translateY(-2px);
+        }
+
+        /* Mobile hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 4px;
+            background: none;
+            border: none;
+        }
+        .hamburger span {
+            width: 28px;
+            height: 2.5px;
+            background: var(--white);
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        /* ----- HERO ----- */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(160deg, var(--navy) 0%, var(--deep-navy) 100%);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        /* subtle wave / ornament */
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 160px;
+            background: var(--white);
+            clip-path: ellipse(70% 100% at 50% 100%);
+            opacity: 0.06;
+        }
+
+        .hero-pattern {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: radial-gradient(circle at 80% 30%, rgba(212, 167, 74, 0.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            padding: 40px 0;
+        }
+
+        .hero-content h1 {
+            font-size: 3.8rem;
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--white);
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+        }
+        .hero-content h1 span {
+            color: var(--gold);
+            position: relative;
+        }
+        .hero-content h1 span::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 4px;
+            width: 100%;
+            height: 8px;
+            background: rgba(212, 167, 74, 0.2);
+            border-radius: 4px;
+        }
+
+        .hero-sub {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 480px;
+            margin-bottom: 36px;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 48px;
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .hero-stats .stat h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+        .hero-stats .stat p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 400;
+            margin-top: 2px;
+        }
+
+        /* Hero right — visual card */
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius);
+            padding: 40px 36px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+        .hero-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(212, 167, 74, 0.15);
+        }
+
+        .hero-card .card-icon {
+            font-size: 2.6rem;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .hero-card h4 {
+            color: var(--white);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .hero-card p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .hero-card .card-list {
+            margin-top: 20px;
+            list-style: none;
+        }
+        .hero-card .card-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .hero-card .card-list li:last-child {
+            border-bottom: none;
+        }
+        .hero-card .card-list li i {
+            color: var(--gold);
+            font-size: 0.9rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* ----- SECTION COMMON ----- */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            background: rgba(212, 167, 74, 0.08);
+            padding: 6px 18px;
+            border-radius: 50px;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+        .section-title span {
+            color: var(--gold);
+        }
+
+        .section-sub {
+            font-size: 1.15rem;
+            color: var(--medium-gray);
+            max-width: 580px;
+            line-height: 1.7;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+        .mx-auto {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ----- SERVICES ----- */
+        #services {
+            background: var(--cream);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 56px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 40px 32px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(11, 26, 47, 0.04);
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(212, 167, 74, 0.15);
+        }
+
+        .service-card .icon {
+            font-size: 2.6rem;
+            color: var(--gold);
+            margin-bottom: 18px;
+        }
+        .service-card h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .service-card p {
+            color: var(--medium-gray);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* ----- ABOUT / WHY CROATIA ----- */
+        #about {
+            background: var(--white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .about-image {
+            background: var(--cream);
+            border-radius: var(--radius);
+            padding: 40px 32px;
+            min-height: 320px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border: 1px solid rgba(11, 26, 47, 0.04);
+            background-image: radial-gradient(circle at 30% 40%, rgba(212, 167, 74, 0.04) 0%, transparent 60%);
+        }
+        .about-image .big-icon {
+            font-size: 4.4rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+            opacity: 0.6;
+        }
+        .about-image h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .about-image p {
+            color: var(--medium-gray);
+            max-width: 320px;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .about-text p {
+            color: var(--medium-gray);
+            margin-bottom: 16px;
+            line-height: 1.8;
+        }
+        .about-text .check-list {
+            list-style: none;
+            margin-top: 24px;
+        }
+        .about-text .check-list li {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(11, 26, 47, 0.04);
+            font-weight: 500;
+        }
+        .about-text .check-list li:last-child {
+            border-bottom: none;
+        }
+        .about-text .check-list li i {
+            color: var(--gold);
+            font-size: 1.2rem;
+            width: 24px;
+        }
+
+        /* ----- TESTIMONIALS ----- */
+        #testimonials {
+            background: var(--cream);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 56px;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 36px 32px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .testimonial-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .testimonial-card .stars {
+            color: var(--gold);
+            letter-spacing: 2px;
+            margin-bottom: 14px;
+            font-size: 1rem;
+        }
+        .testimonial-card blockquote {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--navy);
+            font-weight: 400;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .testimonial-card .author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .testimonial-card .author .avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--cream);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--gold);
+            font-size: 1.2rem;
+            border: 2px solid rgba(212, 167, 74, 0.15);
+        }
+        .testimonial-card .author .name {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .testimonial-card .author .role {
+            font-size: 0.8rem;
+            color: var(--medium-gray);
+        }
+
+        /* ----- CTA ----- */
+        #cta {
+            background: var(--navy);
+            color: var(--white);
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        #cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(212, 167, 74, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        #cta .container {
+            position: relative;
+            z-index: 2;
+        }
+        #cta h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 16px;
+        }
+        #cta h2 span {
+            color: var(--gold);
+        }
+        #cta p {
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 520px;
+            margin: 0 auto 32px;
+            font-size: 1.1rem;
+        }
+        #cta .btn-primary {
+            box-shadow: 0 8px 32px rgba(212, 167, 74, 0.25);
+        }
+        #cta .btn-primary:hover {
+            box-shadow: 0 14px 44px rgba(212, 167, 74, 0.35);
+        }
+
+        /* ----- FOOTER ----- */
+        footer {
+            background: var(--deep-navy);
+            color: rgba(255, 255, 255, 0.6);
+            padding: 60px 0 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand .logo {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+        .footer-brand p {
+            font-size: 0.95rem;
+            max-width: 300px;
+            line-height: 1.7;
+        }
+
+        .footer-col h5 {
+            color: var(--white);
+            font-weight: 700;
+            margin-bottom: 16px;
+            font-size: 1rem;
+        }
+        .footer-col ul {
+            list-style: none;
+        }
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        .footer-col ul a {
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+        .footer-col ul a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-size: 0.9rem;
+        }
+        .footer-socials {
+            display: flex;
+            gap: 18px;
+        }
+        .footer-socials a {
+            transition: var(--transition);
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.4);
+        }
+        .footer-socials a:hover {
+            color: var(--gold);
+            transform: translateY(-3px);
+        }
+
+        /* ----- RESPONSIVE ----- */
+        @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+            }
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            .hero-sub {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .hero-stats {
+                justify-content: center;
+            }
+            .hero-card {
+                max-width: 480px;
+                margin: 0 auto;
+            }
+
+            .services-grid,
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background: var(--navy);
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                padding: 24px 32px;
+                gap: 20px;
+                border-radius: 0 0 var(--radius) var(--radius);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            }
+            .nav-links.open {
+                display: flex;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .nav-cta {
+                padding: 10px 24px;
+                width: 100%;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2.4rem;
+            }
+            .hero-stats {
+                gap: 24px;
+                flex-wrap: wrap;
+            }
+            .hero-stats .stat h3 {
+                font-size: 1.6rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .services-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            section {
+                padding: 70px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            .hero-card {
+                padding: 28px 20px;
+            }
+            .btn {
+                padding: 12px 28px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header id="header">
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <i class="fas fa-compass"></i>
+                Adriatic<span>Ventures</span>
+            </a>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#cta" class="nav-cta">Get Started</a></li>
+            </ul>
+
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home">
+        <div class="hero-pattern"></div>
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="section-label" style="background: rgba(212,167,74,0.12); color: var(--gold);">
+                    <i class="fas fa-flag" style="margin-right: 6px;"></i> Adriatic region
+                </div>
+                <h1>
+                    Start Your <br />
+                    Business in <span>Croatia</span>
+                </h1>
+                <p class="hero-sub">
+                    From company registration to EU funding — we guide you through
+                    every step of launching and scaling your venture on the Adriatic.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#cta" class="btn btn-primary">Start Now</a>
+                    <a href="#services" class="btn btn-outline">Explore Services</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <h3>300+</h3>
+                        <p>Businesses launched</p>
+                    </div>
+                    <div class="stat">
+                        <h3>€2.4B</h3>
+                        <p>EU funds accessed</p>
+                    </div>
+                    <div class="stat">
+                        <h3>98%</h3>
+                        <p>Client satisfaction</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="hero-card">
+                    <div class="card-icon"><i class="fas fa-ship"></i></div>
+                    <h4>Adriatic Business Hub</h4>
+                    <p>Your gateway to the Croatian market — from Zagreb to the Dalmatian coast.</p>
+                    <ul class="card-list">
+                        <li><i class="fas fa-check-circle"></i> Company registration in 5 days</li>
+                        <li><i class="fas fa-check-circle"></i> Tax & legal advisory</li>
+                        <li><i class="fas fa-check-circle"></i> EU grant applications</li>
+                        <li><i class="fas fa-check-circle"></i> Co-working & office spaces</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SERVICES ===== -->
+    <section id="services">
+        <div class="container">
+            <div class="text-center">
+                <span class="section-label"><i class="fas fa-star" style="margin-right: 6px;"></i> What we do</span>
+                <h2 class="section-title">Full‑Service <span>Business</span> Solutions</h2>
+                <p class="section-sub mx-auto">
+                    We handle the complex, so you can focus on building your vision
+                    in one of Europe’s most exciting emerging markets.
+                </p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="icon"><i class="fas fa-building"></i></div>
+                    <h4>Company Formation</h4>
+                    <p>Seamless registration of d.o.o. or j.d.o.o. entities, including bank account setup and VAT registration.</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon"><i class="fas fa-gavel"></i></div>
+                    <h4>Legal & Compliance</h4>
+                    <p>Full-spectrum legal support, from labor law to data protection (GDPR) and contract drafting.</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon"><i class="fas fa-euro-sign"></i></div>
+                    <h4>EU Funding & Grants</h4>
+                    <p>Expert assistance with European structural funds, innovation grants, and regional incentives.</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon"><i class="fas fa-chart-line"></i></div>
+                    <h4>Tax & Accounting</h4>
+                    <p>Optimized tax planning, bookkeeping, payroll, and annual reporting tailored to your business model.</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon"><i class="fas fa-users"></i></div>
+                    <h4>Talent & HR</h4>
+                    <p>Recruitment, employment contracts, and payroll services to build your dream team in Croatia.</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon"><i class="fas fa-map-pin"></i></div>
+                    <h4>Market Entry</h4>
+                    <p>Go‑to‑market strategy, local partnerships, and cultural advisory for a smooth entry into the Adriatic region.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT / WHY CROATIA ===== -->
+    <section id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <div class="big-icon"><i class="fas fa-adjust"></i></div>
+                    <h3>Why Croatia?</h3>
+                    <p>
+                        Stable economy, EU membership, a skilled workforce, and
+                        one of the most beautiful business environments in Europe.
+                    </p>
+                    <div style="margin-top: 20px; display: flex; gap: 24px; justify-content: center;">
+                        <span style="font-weight: 700; color: var(--gold);">#1</span>
+                        <span style="font-weight: 700; color: var(--gold);">EU</span>
+                        <span style="font-weight: 700; color: var(--gold);">Adriatic</span>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <span class="section-label"><i class="fas fa-info-circle" style="margin-right: 6px;"></i> About us</span>
+                    <h3>Your Trusted Partner on the <span style="color: var(--gold);">Adriatic</span></h3>
+                    <p>
+                        Adriatic Ventures was founded by a team of international
+                        lawyers, economists, and entrepreneurs who saw the potential
+                        of Croatia as a gateway to Southeast Europe.
+                    </p>
+                    <p>
+                        We combine local expertise with global standards to deliver
+                        a white‑glove service that takes the guesswork out of doing
+                        business in Croatia.
+                    </p>
+                    <ul class="check-list">
+                        <li><i class="fas fa-check"></i> 10+ years of combined experience</li>
+                        <li><i class="fas fa-check"></i> Bilingual team (Croatian / English)</li>
+                        <li><i class="fas fa-check"></i> Network of 50+ local partners</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section id="testimonials">
+        <div class="container">
+            <div class="text-center">
+                <span class="section-label"><i class="fas fa-quote-left" style="margin-right: 6px;"></i> Testimonials</span>
+                <h2 class="section-title">What Our <span>Clients</span> Say</h2>
+                <p class="section-sub mx-auto">
+                    Real stories from founders who launched their business in Croatia
+                    with our support.
+                </p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <blockquote>
+                        “Adriatic Ventures made the entire process of setting up our
+                        d.o.o. feel effortless. Within two weeks, we were operational
+                        and already applying for EU grants.”
+                    </blockquote>
+                    <div class="author">
+                        <div class="avatar">EK</div>
+                        <div>
+                            <div class="name">Elena Kovač</div>
+                            <div class="role">Founder, GreenAdriatic</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <blockquote>
+                        “The tax and legal advice we received was world‑class.
+                        They helped us navigate Croatian labor law and even found
+                        us the perfect office space in Split.”
+                    </blockquote>
+                    <div class="author">
+                        <div class="avatar">MR</div>
+                        <div>
+                            <div class="name">Marko Radić</div>
+                            <div class="role">CEO, TechAdria</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <blockquote>
+                        “We came from the US with zero knowledge of the local market.
+                        Adriatic Ventures held our hand through every step — from
+                        registration to hiring our first employee.”
+                    </blockquote>
+                    <div class="author">
+                        <div class="avatar">JS</div>
+                        <div>
+                            <div class="name">James Sullivan</div>
+                            <div class="role">Co‑founder, Adriatic Digital</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section id="cta">
+        <div class="container text-center">
+            <span class="section-label" style="background: rgba(212,167,74,0.12); color: var(--gold);">
+                <i class="fas fa-rocket" style="margin-right: 6px;"></i> Get started
+            </span>
+            <h2>Ready to Launch Your <span>Adriatic</span> Venture?</h2>
+            <p>
+                Book a free 30‑minute consultation with our team. We’ll map out your
+                personalized roadmap to business success in Croatia.
+            </p>
+            <a href="#" class="btn btn-primary" style="font-size: 1.1rem; padding: 16px 48px;">
+                <i class="fas fa-calendar-check" style="margin-right: 10px;"></i> Book a Call
+            </a>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo" style="color: var(--white);">
+                        <i class="fas fa-compass" style="color: var(--gold);"></i>
+                        Adriatic<span>Ventures</span>
+                    </a>
+                    <p style="margin-top: 12px;">
+                        Your gateway to doing business in Croatia.
+                        From the capital to the coast — we've got you covered.
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#cta">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Resources</h5>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Guides</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Contact</h5>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-envelope" style="margin-right: 8px; color: var(--gold);"></i> hello@adriaticventures.hr</a></li>
+                        <li><a href="#"><i class="fas fa-phone" style="margin-right: 8px; color: var(--gold);"></i> +385 1 234 5678</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt" style="margin-right: 8px; color: var(--gold);"></i> Zagreb, Croatia</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span>&copy; 2026 Adriatic Ventures. All rights reserved.</span>
+                <div class="footer-socials">
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT (minimal) ===== -->
+    <script>
+        // ----- NAV SCROLL EFFECT -----
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 80) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // ----- MOBILE HAMBURGER -----
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+
+        // Close menu on link click (mobile)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+            });
+        });
+    </script>
+
+</body>
+</html>
