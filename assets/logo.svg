@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="NM Consultant">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#13314f"/>
+      <stop offset="100%" stop-color="#0b1a2f"/>
+    </linearGradient>
+  </defs>
+  <!-- shield/peak mark -->
+  <path d="M60 6 L110 26 V60 C110 92 88 108 60 114 C32 108 10 92 10 60 V26 Z" fill="url(#g)" stroke="#d4a74a" stroke-width="3"/>
+  <!-- inner gold frame -->
+  <path d="M60 16 L100 32 V60 C100 86 82 99 60 104 C38 99 20 86 20 60 V32 Z" fill="none" stroke="#d4a74a" stroke-opacity="0.35" stroke-width="1.5"/>
+  <!-- NM monogram -->
+  <text x="60" y="74" font-family="Georgia, 'Times New Roman', serif" font-size="44" font-weight="700" fill="#d4a74a" text-anchor="middle" letter-spacing="-1">NM</text>
+</svg>
