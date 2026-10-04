@@ -135,17 +135,18 @@
             transform-origin: center;
         }
 
-        /* Hamburger animation when active - creates X */
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg);
-            transform-origin: center;
-        }
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
+        /* Hamburger animation when active - shows X */
+        .hamburger.active span:nth-child(1),
+        .hamburger.active span:nth-child(2),
         .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg);
-            transform-origin: center;
+            display: none;
+        }
+        .hamburger.active::after {
+            content: '✕';
+            display: block;
+            font-size: 28px;
+            color: white;
+            line-height: 1;
         }
 
         /* ===== HERO ===== */
@@ -644,16 +645,15 @@
                 transition: all 0.3s ease !important;
             }
 
-            .hamburger.active span:nth-child(1) {
-                transform: rotate(45deg) !important;
-                transform-origin: center !important;
+            .hamburger.active span {
+                display: none !important;
             }
-            .hamburger.active span:nth-child(2) {
-                opacity: 0 !important;
-            }
-            .hamburger.active span:nth-child(3) {
-                transform: rotate(-45deg) !important;
-                transform-origin: center !important;
+            .hamburger.active::after {
+                content: '✕' !important;
+                display: block !important;
+                font-size: 28px !important;
+                color: white !important;
+                line-height: 1 !important;
             }
 
             .nav-links {
