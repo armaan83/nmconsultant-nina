@@ -708,8 +708,10 @@
         }
 
         /* Desktop: hide hamburger, show nav-links */
-        .hamburger {
-            display: none;
+        @media (min-width: 769px) {
+            .hamburger {
+                display: none !important;
+            }
         }
         .nav-links {
             display: flex;
