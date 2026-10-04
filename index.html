@@ -642,9 +642,27 @@
                 z-index: 99999 !important;
             }
 
+            /* Mobile: ensure menu items are visible regardless of language */
+            .nav-links.active li {
+                display: block !important;
+                visibility: visible !important;
+            }
+
+            .nav-links.active li a[data-lang="en-inline"] {
+                display: inline !important;
+                visibility: visible !important;
+            }
+
+            .nav-links.active li a[data-lang="hr-inline"] {
+                display: inline !important;
+                visibility: visible !important;
+            }
+
             .nav-links li {
                 width: 100% !important;
                 margin: 10px 0 !important;
+                display: block !important;
+                visibility: visible !important;
             }
 
             .nav-links a {
@@ -654,6 +672,7 @@
                 padding: 20px 0 !important;
                 color: white !important;
                 text-decoration: none !important;
+                visibility: visible !important;
             }
 
             .nav-cta a {
