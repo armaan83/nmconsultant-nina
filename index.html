@@ -642,22 +642,6 @@
                 z-index: 99999 !important;
             }
 
-            /* Mobile: ensure menu items are visible regardless of language */
-            .nav-links.active li {
-                display: block !important;
-                visibility: visible !important;
-            }
-
-            .nav-links.active li a[data-lang="en-inline"] {
-                display: inline !important;
-                visibility: visible !important;
-            }
-
-            .nav-links.active li a[data-lang="hr-inline"] {
-                display: inline !important;
-                visibility: visible !important;
-            }
-
             .nav-links li {
                 width: 100% !important;
                 margin: 10px 0 !important;
@@ -668,30 +652,30 @@
             .nav-links a {
                 display: block !important;
                 width: 100% !important;
-                font-size: 1.5rem !important;
-                padding: 20px 0 !important;
-                color: white !important;
+                text-align: center !important;
+                padding: 15px 20px !important;
+                color: var(--white) !important;
                 text-decoration: none !important;
-                visibility: visible !important;
+                font-size: 1.2rem !important;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+                transition: all 0.3s ease !important;
             }
 
-            .nav-cta a {
+            .nav-links a:hover,
+            .nav-links a:focus {
+                background: rgba(212, 167, 74, 0.2) !important;
+                color: var(--gold) !important;
+                transform: translateX(5px) !important;
+            }
+
+            .nav-cta {
+                margin-top: 20px !important;
                 background: var(--gold) !important;
-                color: var(--navy) !important;
+                color: var(--dark) !important;
+                border-radius: 50px !important;
                 padding: 15px 40px !important;
-                border-radius: 8px !important;
                 font-weight: bold !important;
             }
-
-            .hamburger {
-                display: block !important;
-                z-index: 99999 !important;
-                position: relative !important;
-            }
-
-            body.menu-open {
-                overflow: hidden !important;
-                height: 100vh !important;
             }
             
             .hero-content h1 {
