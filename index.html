@@ -618,6 +618,17 @@
         }
 
         @media (max-width: 768px) {
+            /* Desktop: hide hamburger, show nav-links */
+            .hamburger {
+                display: none !important;
+            }
+            .nav-links {
+                display: flex !important;
+            }
+        }
+
+        @media (min-width: 769px) {
+            /* Mobile: hide nav-links by default, show hamburger */
             .nav-links {
                 display: none !important;
                 position: fixed !important;
@@ -629,22 +640,8 @@
                 backdrop-filter: blur(10px) !important;
                 flex-direction: column !important;
                 padding: 32px 24px !important;
-                gap: 0 !important;
-                border-bottom: 1px solid rgba(212, 167, 74, 0.1) !important;
                 z-index: 999 !important;
                 overflow-y: auto !important;
-                animation: slideDown 0.3s ease !important;
-            }
-
-            @keyframes slideDown {
-                from {
-                    opacity: 0;
-                    transform: translateY(-10px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
             }
 
             .nav-links.active {
@@ -664,17 +661,8 @@
                 text-align: center !important;
             }
 
-            /* Show correct language in mobile */
-            body.lang-en .nav-links a[data-lang$="hr-inline"] {
-                display: none !important;
-            }
-            body.lang-hr .nav-links a[data-lang$="en-inline"] {
-                display: none !important;
-            }
-
             .nav-cta {
                 margin-top: 16px !important;
-                text-align: center !important;
             }
 
             .nav-cta a {
@@ -696,18 +684,6 @@
 
             body.menu-open {
                 overflow: hidden !important;
-            }
-            
-            .hero-content h1 {
-                font-size: 2rem !important;
-            }
-            
-            .hero-portrait {
-                max-width: 280px !important;
-            }
-            
-            .section-title {
-                font-size: 1.8rem !important;
             }
         }
     </style>
