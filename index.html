@@ -373,75 +373,6 @@
             font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.6);
         }
-
-        /* Hero visual with portrait */
-        .hero-visual {
-            position: relative;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            height: 100%;
-        }
-
-        .hero-portrait {
-            position: relative;
-            max-width: 480px;
-            width: 100%;
-        }
-
-        .hero-portrait img {
-            width: 100%;
-            height: auto;
-            border-radius: 20px;
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Gold overlay text near portrait */
-        .hero-script {
-            position: absolute;
-            top: 10%;
-            right: -30px;
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 2.5rem;
-            color: var(--gold);
-            z-index: 3;
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-            transform: rotate(180deg);
-            opacity: 0.9;
-        }
-
-        .hero-gold-text {
-            position: absolute;
-            bottom: 15%;
-            left: -40px;
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 1.5rem;
-            color: var(--gold);
-            z-index: 3;
-            background: rgba(11, 26, 47, 0.8);
-            padding: 16px 24px;
-            border-radius: 12px;
-            border: 1px solid rgba(212, 167, 74, 0.3);
-        }
-
-        /* Decorative glow behind portrait */
-        .hero-visual::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            right: 10%;
-            transform: translateY(-50%);
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(212, 167, 74, 0.15) 0%, transparent 70%);
-            border-radius: 50%;
-            z-index: 1;
-        }
         }
 
         .hero-content h1 {
@@ -1323,13 +1254,6 @@
                     <a href="https://wa.me/385996396931?text=Hi%20NM%20Consultant%2C%20I%27d%20like%20to%20leave%20you%20a%20message%20about%20starting%20my%20business%20in%20Croatia." target="_blank" rel="noopener noreferrer" class="btn btn-primary">
                         GET IN TOUCH <i class="fas fa-arrow-right" style="margin-left: 8px;"></i>
                     </a>
-                </div>
-            </div>
-
-            <div class="hero-visual">
-                <div class="hero-portrait">
-                    <img src="assets/nina_portrait.jpg" alt="Nina - NM Consultant" />
-                    <div class="hero-gold-text">Your goals. My support.</div>
                 </div>
             </div>
         </div>
