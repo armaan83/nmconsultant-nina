@@ -663,15 +663,10 @@
                 border-bottom: 1px solid rgba(212, 167, 74, 0.1);
                 text-align: center;
             }
-            
-            /* Show both language versions stacked */
-            .nav-links li [data-lang] {
-                display: block !important;
-            }
-            
-            /* Hide the inactive language version in mobile */
-            body.lang-en .nav-links li [data-lang$="hr"],
-            body.lang-hr .nav-links li [data-lang$="en"] {
+
+            /* Hide the inactive language version in mobile - MUST be last */
+            body.lang-en .nav-links li [data-lang$="hr-inline"],
+            body.lang-hr .nav-links li [data-lang$="en-inline"] {
                 display: none !important;
             }
 
