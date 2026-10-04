@@ -650,8 +650,7 @@
             }
 
             .nav-links.active a {
-                /* Respect language settings */
-                display: unset !important;
+                /* Let language CSS control visibility */
                 text-align: center !important;
                 padding: 15px 20px !important;
                 font-size: 1.2rem !important;
@@ -659,9 +658,7 @@
                 transition: all 0.3s ease !important;
             }
 
-            /* Ensure language-specific items respect body class */
-            body.lang-en .nav-links.active a[data-lang="en"],
-            body.lang-en .nav-links.active a[data-lang="en-inline"] {
+            .nav-links a:hover,\n+            .nav-links a:focus {\n+                background: rgba(212, 167, 74, 0.2) !important;\n+                color: var(--gold) !important;\n+                transform: translateX(5px) !important;\n+            }\n+\n+            .nav-cta {\n+                margin-top: 20px !important;\n+                background: var(--gold) !important;\n+                color: var(--dark) !important;\n+                border-radius: 50px !important;\n+                padding: 15px 40px !important;\n+                font-weight: bold !important;\n             }\n", "exit_code": 0, "error": null}
                 display: block !important;
             }
 
