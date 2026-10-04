@@ -1000,6 +1000,25 @@
     </div>
 
     <script>
+        // Debug diagnostics
+        window.addEventListener('load', () => {
+            const debug = document.createElement('div');
+            debug.id = 'debug-info';
+            debug.style.cssText = 'position:fixed;top:0;left:0;background:rgba(0,0,0,0.8);color:#0f0;padding:10px;font-size:12px;z-index:99999;font-family:monospace;';
+            debug.innerHTML = `Viewport: <span id="debug-viewport">-</span><br>Menu: <span id="debug-menu">-</span><br>Nav: <span id="debug-nav">-</span>`;
+            document.body.appendChild(debug);
+            
+            const updateDebug = () => {
+                document.getElementById('debug-viewport').textContent = window.innerWidth + 'px (mobile: ' + (window.innerWidth <= 768 ? 'YES' : 'NO') + ')';
+                const nav = document.getElementById('navLinks');
+                document.getElementById('debug-menu').textContent = nav ? (nav.classList.contains('active') ? 'OPEN' : 'CLOSED') : 'NOT FOUND';
+                document.getElementById('debug-nav').textContent = nav ? getComputedStyle(nav).display : 'NOT FOUND';
+            };
+            
+            window.addEventListener('resize', updateDebug);
+            updateDebug();
+        });
+
         // Mobile menu toggle
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
@@ -1009,6 +1028,10 @@
             navLinks.classList.toggle('active');
             hamburger.classList.toggle('active');
             document.body.classList.toggle('menu-open');
+            
+            // Debug log
+            console.log('Menu toggled:', navLinks.classList.contains('active'));
+            console.log('Viewport:', window.innerWidth);
         });
 
         // Close menu when clicking outside
