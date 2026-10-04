@@ -664,16 +664,12 @@
                 text-align: center !important;
             }
 
-            .nav-links a[data-lang$="hr-inline"] {
+            /* Show correct language in mobile */
+            body.lang-en .nav-links a[data-lang$="hr-inline"] {
                 display: none !important;
             }
-
             body.lang-hr .nav-links a[data-lang$="en-inline"] {
                 display: none !important;
-            }
-
-            body.lang-hr .nav-links a[data-lang$="hr-inline"] {
-                display: block !important;
             }
 
             .nav-cta {
