@@ -650,14 +650,24 @@
             }
 
             .nav-links.active a {
-                /* Restore language-aware display */
-                display: inherit !important;
-                visibility: inherit !important;
+                /* Respect language settings */
+                display: unset !important;
                 text-align: center !important;
                 padding: 15px 20px !important;
                 font-size: 1.2rem !important;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
                 transition: all 0.3s ease !important;
+            }
+
+            /* Ensure language-specific items respect body class */
+            body.lang-en .nav-links.active a[data-lang="en"],
+            body.lang-en .nav-links.active a[data-lang="en-inline"] {
+                display: block !important;
+            }
+
+            body.lang-hr .nav-links.active a[data-lang="hr"],
+            body.lang-hr .nav-links.active a[data-lang="hr-inline"] {
+                display: block !important;
             }
 
             .nav-links a:hover,
