@@ -549,6 +549,18 @@
         body.lang-hr [data-lang="hr-inline"] { display: inline; }
         body.lang-hr [data-lang="hr-flex"] { display: flex; }
 
+        /* Mobile nav links should be block */
+        @media (max-width: 768px) {
+            .nav-links[data-lang="en-inline"],
+            .nav-links[data-lang="hr-inline"] {
+                display: block !important;
+            }
+            .nav-links a[data-lang] {
+                display: block !important;
+                width: 100%;
+            }
+        }
+
         /* ===== FLOATING WHATSAPP ===== */
         .whatsapp-widget {
             position: fixed;
