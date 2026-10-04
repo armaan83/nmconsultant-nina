@@ -105,8 +105,16 @@
 
         .lang-toggle {
             font-size: 0.9rem;
-            color: var(--medium-gray);
+            color: var(--gold);
             cursor: pointer;
+            padding: 6px 12px;
+            border: 1px solid rgba(212, 167, 74, 0.3);
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+
+        .lang-toggle:hover {
+            background: rgba(212, 167, 74, 0.1);
         }
 
         .hamburger {
@@ -520,6 +528,15 @@
             font-size: 0.9rem;
         }
 
+        /* ===== LANGUAGE TOGGLE ===== */
+        [data-lang] { display: none; }
+        body.lang-en [data-lang="en"] { display: block; }
+        body.lang-en [data-lang="en-inline"] { display: inline; }
+        body.lang-en [data-lang="en-flex"] { display: flex; }
+        body.lang-hr [data-lang="hr"] { display: block; }
+        body.lang-hr [data-lang="hr-inline"] { display: inline; }
+        body.lang-hr [data-lang="hr-flex"] { display: flex; }
+
         /* ===== FLOATING WHATSAPP ===== */
         .whatsapp-widget {
             position: fixed;
@@ -591,6 +608,19 @@
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--navy);
+                flex-direction: column;
+                padding: 20px;
+                gap: 16px;
+                border-bottom: 1px solid rgba(212, 167, 74, 0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
             }
             
             .hamburger {
@@ -611,7 +641,7 @@
         }
     </style>
 </head>
-<body>
+<body class="lang-en">
 
     <!-- ===== HEADER ===== -->
     <header id="header">
@@ -621,12 +651,17 @@
                 NM<span>Consultant</span>
             </a>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#home" class="active">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="#cta" class="nav-cta">Get Started</a></li>
-                <li><span class="lang-toggle">EN | HR</span></li>
+                <li><a href="#home" data-lang="en-inline" class="active">Home</a></li>
+                <li><a href="#home" data-lang="hr-inline">Početna</a></li>
+                <li><a href="#about" data-lang="en-inline">About</a></li>
+                <li><a href="#about" data-lang="hr-inline">O nama</a></li>
+                <li><a href="#services" data-lang="en-inline">Services</a></li>
+                <li><a href="#services" data-lang="hr-inline">Usluge</a></li>
+                <li><a href="#testimonials" data-lang="en-inline">Testimonials</a></li>
+                <li><a href="#testimonials" data-lang="hr-inline">Preporuke</a></li>
+                <li><a href="#cta" class="nav-cta" data-lang="en-inline">Get Started</a></li>
+                <li><a href="#cta" class="nav-cta" data-lang="hr-inline">Započni</a></li>
+                <li><span class="lang-toggle" onclick="toggleLanguage()">EN | HR</span></li>
             </ul>
             <button class="hamburger" id="hamburger" aria-label="Menu">
                 <span></span>
@@ -642,19 +677,34 @@
         <div class="hero-overlay"></div>
         <div class="container hero-grid">
             <div class="hero-content">
-                <h1>Life & <span>Business Solutions</span><br />Across Croatia</h1>
-                <p class="hero-sub">
-                    Practical support. Personal solutions. Your next chapter starts here.<br>
-                    From company registration to daily life — I'm here to help you thrive in Croatia.
-                </p>
-                <a href="https://wa.me/385996396931?text=Hi%20NM%20Consultant%2C%20I%27d%20like%20to%20leave%20you%20a%20message%20about%20starting%20my%20business%20in%20Croatia." target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                    GET IN TOUCH <i class="fas fa-arrow-right"></i>
-                </a>
+                <!-- English -->
+                <div data-lang="en">
+                    <h1>Life & <span>Business Solutions</span><br />Across Croatia</h1>
+                    <p class="hero-sub">
+                        Practical support. Personal solutions. Your next chapter starts here.<br>
+                        From company registration to daily life — I'm here to help you thrive in Croatia.
+                    </p>
+                    <a href="https://wa.me/385996396931?text=Hi%20NM%20Consultant%2C%20I%27d%20like%20to%20leave%20you%20a%20message%20about%20starting%20my%20business%20in%20Croatia." target="_blank" class="btn btn-primary">
+                        GET IN TOUCH <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <!-- Croatian -->
+                <div data-lang="hr">
+                    <h1>Život & <span>Poslovna Rješenja</span><br />Širom Hrvatske</h1>
+                    <p class="hero-sub">
+                        Praktična podrška. Osobna rješenja. Vaš novi početak počinje ovdje.<br>
+                        Od registracije tvrtke do svakodnevnog života — tu sam da vam pomognem uspjeti u Hrvatskoj.
+                    </p>
+                    <a href="https://wa.me/385996396931?text=Pozdrav%2C%20voleo%20bih%20ostaviti%20poruku%20o%20osnivanju%20tvrtke%20u%20Hrvatskoj." target="_blank" class="btn btn-primary">
+                        KONTAKTIRAJTE <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
             </div>
             <div class="hero-visual">
                 <div class="hero-portrait">
                     <img src="assets/nina_portrait.jpg" alt="Nina - NM Consultant" />
                     <div class="hero-gold-text">Your goals. My support.</div>
+                    <div class="hero-gold-text" style="display:none;">Vaši ciljevi. Moja podrška.</div>
                 </div>
             </div>
         </div>
@@ -664,40 +714,63 @@
     <section class="services" id="services">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">OUR SERVICES</span>
-                <h2 class="section-title">How I Can <span>Help You</span></h2>
-                <p class="section-sub">Personalized support for your everyday needs, career, business and new beginnings in Croatia.</p>
+                <span class="section-label" data-lang="en">OUR SERVICES</span>
+                <span class="section-label" data-lang="hr">NAŠE USLUGE</span>
+                <h2 class="section-title">
+                    <span data-lang="en-inline">How I Can <span>Help You</span></span>
+                    <span data-lang="hr-inline">Kako vam mogu <span>pomoći</span></span>
+                </h2>
+                <p class="section-sub" data-lang="en">Personalized support for your everyday needs, career, business and new beginnings in Croatia.</p>
+                <p class="section-sub" data-lang="hr">Personalizirana podrška za vaše svakodnevne potrebe, karijeru, poslovne i nove početke u Hrvatskoj.</p>
             </div>
             <div class="services-grid">
+                <!-- Service 1 -->
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-file-alt"></i></div>
-                    <h3>Documents & Administration</h3>
-                    <p>Assistance with documents, institutions, appointments and everyday administration in Croatia.</p>
+                    <h3 data-lang="en">Documents & Administration</h3>
+                    <h3 data-lang="hr">Dokumenti i Administracija</h3>
+                    <p data-lang="en">Assistance with documents, institutions, appointments and everyday administration in Croatia.</p>
+                    <p data-lang="hr">Pomoć s dokumentima, institucijama, terminima i svakodnevnom administracijom u Hrvatskoj.</p>
                 </div>
+                <!-- Service 2 -->
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-briefcase"></i></div>
-                    <h3>Jobs & CV Support</h3>
-                    <p>Support with job searching, CV preparation and navigating the Croatian job market.</p>
+                    <h3 data-lang="en">Jobs & CV Support</h3>
+                    <h3 data-lang="hr">Poslovi i Podrška za CV</h3>
+                    <p data-lang="en">Support with job searching, CV preparation and navigating the Croatian job market.</p>
+                    <p data-lang="hr">Podrška pri traženju posla, pripremi CV-a i snalaženju na hrvatskom tržištu rada.</p>
                 </div>
+                <!-- Service 3 -->
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-building"></i></div>
-                    <h3>Business Setup</h3>
-                    <p>Practical guidance for foreigners who want to start or develop a business in Croatia.</p>
+                    <h3 data-lang="en">Business Setup</h3>
+                    <h3 data-lang="hr">Osnivanje Posla</h3>
+                    <p data-lang="en">Practical guidance for foreigners who want to start or develop a business in Croatia.</p>
+                    <p data-lang="hr">Praktično vodstvo za strance koji žele osnovati ili razviti posao u Hrvatskoj.</p>
                 </div>
+                <!-- Service 4 -->
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-home"></i></div>
-                    <h3>Practical Support in Croatia</h3>
-                    <p>Everyday assistance with practical matters, organization and finding the right local solutions.</p>
+                    <h3 data-lang="en">Practical Support in Croatia</h3>
+                    <h3 data-lang="hr">Praktična Podrška u Hrvatskoj</h3>
+                    <p data-lang="en">Everyday assistance with practical matters, organization and finding the right local solutions.</p>
+                    <p data-lang="hr">Svakodnevna pomoć oko praktičnih stvari, organizacije i pronalaženja pravih lokalnih rješenja.</p>
                 </div>
+                <!-- Service 5 -->
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-handshake"></i></div>
-                    <h3>Personal Assistance</h3>
-                    <p>Individual support tailored to each person's situation and specific needs.</p>
+                    <h3 data-lang="en">Personal Assistance</h3>
+                    <h3 data-lang="hr">Osobna Asistencija</h3>
+                    <p data-lang="en">Individual support tailored to each person's situation and specific needs.</p>
+                    <p data-lang="hr">Individualna podrška prilagođena situaciji i specifičnim potrebama svake osobe.</p>
                 </div>
+                <!-- Service 6 -->
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-plane"></i></div>
-                    <h3>Support for Foreigners</h3>
-                    <p>Friendly, practical guidance for people who are moving to, living in or starting a new chapter in Croatia.</p>
+                    <h3 data-lang="en">Support for Foreigners</h3>
+                    <h3 data-lang="hr">Podrška Strancima</h3>
+                    <p data-lang="en">Friendly, practical guidance for people who are moving to, living in or starting a new chapter in Croatia.</p>
+                    <p data-lang="hr">Prijateljsko, praktično vodstvo za ljude koji se selu, žive ili počinju novi život u Hrvatskoj.</p>
                 </div>
             </div>
         </div>
@@ -708,15 +781,20 @@
         <div class="container">
             <div class="about-grid">
                 <div class="about-text">
-                    <span class="section-label">MORE ABOUT NM CONSULTANT</span>
-                    <h3>Your Trusted Partner in Croatia</h3>
-                    <p>With experience in people, travel and international environments, I offer practical and reliable support to help you navigate life and business in Croatia.</p>
-                    <p>From company registration to residence permits, I guide you through every step — making sure your journey is smooth and stress-free.</p>
-                    <p>Let's make it happen.</p>
+                    <span class="section-label" data-lang="en">MORE ABOUT NM CONSULTANT</span>
+                    <span class="section-label" data-lang="hr">VIŠE O NM CONSULTANT</span>
+                    <h3 data-lang="en">Your Trusted Partner in Croatia</h3>
+                    <h3 data-lang="hr">Vaš Povjerenjivi Partner u Hrvatskoj</h3>
+                    <p data-lang="en">With experience in people, travel and international environments, I offer practical and reliable support to help you navigate life and business in Croatia.</p>
+                    <p data-lang="hr">S iskustvom u radu s ljudima, putovanjima i međunarodnim okruženjima, nudim praktičnu i pouzdanu podršku za snalaženje u životu i poslovanju u Hrvatskoj.</p>
+                    <p data-lang="en">From company registration to residence permits, I guide you through every step — making sure your journey is smooth and stress-free.</p>
+                    <p data-lang="hr">Od registracije tvrtke do boravišnih dozvola, vodim vas kroz svaki korak — osiguravajući da vaš put bude glatak i bez stresa.</p>
+                    <p data-lang="en">Let's make it happen.</p>
+                    <p data-lang="hr">Zajedno ćemo to ostvariti.</p>
                     <ul class="check-list">
-                        <li><i class="fas fa-check"></i> Personal, one-on-one support</li>
-                        <li><i class="fas fa-check"></i> Bilingual (Croatian / English)</li>
-                        <li><i class="fas fa-check"></i> Deep local expertise</li>
+                        <li><i class="fas fa-check"></i> <span data-lang="en">Personal, one-on-one support</span><span data-lang="hr">Osobna,individualna podrška</span></li>
+                        <li><i class="fas fa-check"></i> <span data-lang="en">Bilingual (Croatian / English)</span><span data-lang="hr">Dvije jezike (hrvatski / engleski)</span></li>
+                        <li><i class="fas fa-check"></i> <span data-lang="en">Deep local expertise</span><span data-lang="hr">Duboko lokalno znanje</span></li>
                     </ul>
                 </div>
                 <div style="display: flex; justify-content: center;">
@@ -730,41 +808,55 @@
     <section class="testimonials" id="testimonials">
         <div class="container">
             <div class="section-header">
-                <span class="section-label"><i class="fas fa-quote-left" style="margin-right: 6px;"></i> Testimonials</span>
-                <h2 class="section-title">What Our <span>Clients</span> Say</h2>
-                <p class="section-sub">Real stories from founders who launched their business in Croatia with our support.</p>
+                <span class="section-label" data-lang="en"><i class="fas fa-quote-left" style="margin-right: 6px;"></i> Testimonials</span>
+                <span class="section-label" data-lang="hr"><i class="fas fa-quote-left" style="margin-right: 6px;"></i> Preporuke</span>
+                <h2 class="section-title">
+                    <span data-lang="en-inline">What Our <span>Clients</span> Say</span>
+                    <span data-lang="hr-inline">Što kažu naši <span>klijenti</span></span>
+                </h2>
+                <p class="section-sub" data-lang="en">Real stories from founders who launched their business in Croatia with our support.</p>
+                <p class="section-sub" data-lang="hr">Prave priče osnivača koji su pokrenuli posao u Hrvatskoj uz našu podršku.</p>
             </div>
             <div class="testimonials-grid">
+                <!-- Testimonial 1 -->
                 <div class="testimonial-card">
                     <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <blockquote>"NM Consultant made the entire process of setting up our d.o.o. feel effortless. Within two weeks, we were operational and already scaling our regional business."</blockquote>
+                    <blockquote data-lang="en">"NM Consultant made the entire process of setting up our d.o.o. feel effortless. Within two weeks, we were operational and already scaling our regional business."</blockquote>
+                    <blockquote data-lang="hr">"NM Consultant je cijeli proces osnivanja naše d.o.o. učinio jednostavnim. Unutar dva tjedna bili smo operativni i već širili regionalni posao."</blockquote>
                     <div class="author">
                         <div class="avatar">SA</div>
                         <div>
                             <div class="name">Shakeel Ali</div>
-                            <div class="role">Co-Founder, Mercy Group d.o.o.</div>
+                            <div class="role" data-lang="en">Co-Founder, Mercy Group d.o.o.</div>
+                            <div class="role" data-lang="hr">Suosnivač, Mercy Group d.o.o.</div>
                         </div>
                     </div>
                 </div>
+                <!-- Testimonial 2 -->
                 <div class="testimonial-card">
                     <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <blockquote>"We came from the US with zero knowledge of the local market. NM Consultant held our hand through every step — from registration to hiring our first employee."</blockquote>
+                    <blockquote data-lang="en">"We came from the US with zero knowledge of the local market. NM Consultant held our hand through every step — from registration to hiring our first employee."</blockquote>
+                    <blockquote data-lang="hr">"Došli smo iz SAD-a s nula znanja o lokalnom tržištu. NM Consultant nas je vodio kroz svaki korak — od registracije do zapošljavanja prvog zaposlenika."</blockquote>
                     <div class="author">
                         <div class="avatar">MM</div>
                         <div>
                             <div class="name">Mohmad Malek</div>
-                            <div class="role">MK Brothers Farm LLC, USA</div>
+                            <div class="role" data-lang="en">MK Brothers Farm LLC, USA</div>
+                            <div class="role" data-lang="hr">MK Brothers Farm LLC, SAD</div>
                         </div>
                     </div>
                 </div>
+                <!-- Testimonial 3 -->
                 <div class="testimonial-card">
                     <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <blockquote>"My name is César Augusto Silva Jorge and I am currently living in Madrid. I have been living in Europe since 2018 and I am working in the construction field. I would like to sincerely thank NM Consultant — specifically Miss Nina — for her professional support."</blockquote>
+                    <blockquote data-lang="en">"My name is César Augusto Silva Jorge and I am currently living in Madrid. I would like to sincerely thank NM Consultant — specifically Miss Nina — for her professional support in helping me with my residence and work permit."</blockquote>
+                    <blockquote data-lang="hr">"Zovem se César Augusto Silva Jorge i trenutno živim u Madridu. Želim se iskreno zahvaliti NM Consultant — posebno gđi Nini — na profesionalnoj podršci pri dobivanju boravišne i radne dozvole."</blockquote>
                     <div class="author">
                         <div class="avatar">CJ</div>
                         <div>
                             <div class="name">César Augusto Silva Jorge</div>
-                            <div class="role">Madrid, Spain • Construction</div>
+                            <div class="role" data-lang="en">Madrid, Spain • Construction</div>
+                            <div class="role" data-lang="hr">Madrid, Španjolska • Građevina</div>
                         </div>
                     </div>
                 </div>
@@ -775,11 +867,18 @@
     <!-- ===== CTA ===== -->
     <section class="cta" id="cta">
         <div class="container">
-            <span class="section-label">LET'S TALK</span>
-            <h2>Need Support? <span style="color: var(--gold);">I'm Here to Help.</span></h2>
-            <p>Reach out and let's start your Croatian journey together.</p>
+            <span class="section-label" data-lang="en">LET'S TALK</span>
+            <span class="section-label" data-lang="hr">POVELIJO</span>
+            <h2>
+                <span data-lang="en">Need Support? <span style="color: var(--gold);">I'm Here to Help.</span></span>
+                <span data-lang="hr">Treba vam podrška? <span style="color: var(--gold);">Tu sam da pomognem.</span></span>
+            </h2>
+            <p data-lang="en">Reach out and let's start your Croatian journey together.</p>
+            <p data-lang="hr">Javite mi se i započnimo vaš hrvatski put zajedno.</p>
             <a href="https://wa.me/385996396931?text=Hi%20NM%20Consultant%2C%20I%27d%20like%20to%20leave%20you%20a%20message%20about%20starting%20my%20business%20in%20Croatia." target="_blank" class="btn btn-primary" style="background: var(--gold); color: var(--navy);">
-                <i class="fab fa-whatsapp"></i> Contact on WhatsApp
+                <i class="fab fa-whatsapp"></i> 
+                <span data-lang="en">Contact on WhatsApp</span>
+                <span data-lang="hr">Kontaktirajte na WhatsApp</span>
             </a>
             <div class="contact-info">
                 <div class="contact-item">
@@ -788,7 +887,7 @@
                 </div>
                 <div class="contact-item">
                     <i class="fab fa-linkedin"></i>
-                    <span>LinkedIn Profile</span>
+                    <span>LinkedIn</span>
                 </div>
             </div>
         </div>
@@ -803,20 +902,23 @@
                         <img src="assets/logo.svg" alt="NM Consultant" class="logo-mark" />
                         NM<span>Consultant</span>
                     </a>
-                    <p>Life & Business Solutions Across Croatia</p>
+                    <p data-lang="en">Life & Business Solutions Across Croatia</p>
+                    <p data-lang="hr">Život & Poslovna Rješenja Širom Hrvatske</p>
                 </div>
                 <div class="footer-links">
-                    <h4>Navigation</h4>
+                    <h4 data-lang="en">Navigation</h4>
+                    <h4 data-lang="hr">Navigacija</h4>
                     <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#testimonials">Testimonials</a></li>
-                        <li><a href="#cta">Contact</a></li>
+                        <li><a href="#home" data-lang="en">Home</a><a href="#home" data-lang="hr" style="display:none;">Početna</a></li>
+                        <li><a href="#about" data-lang="en">About</a><a href="#about" data-lang="hr" style="display:none;">O nama</a></li>
+                        <li><a href="#services" data-lang="en">Services</a><a href="#services" data-lang="hr" style="display:none;">Usluge</a></li>
+                        <li><a href="#testimonials" data-lang="en">Testimonials</a><a href="#testimonials" data-lang="hr" style="display:none;">Preporuke</a></li>
+                        <li><a href="#cta" data-lang="en">Contact</a><a href="#cta" data-lang="hr" style="display:none;">Kontakt</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
-                    <h4>Contact</h4>
+                    <h4 data-lang="en">Contact</h4>
+                    <h4 data-lang="hr">Kontakt</h4>
                     <ul>
                         <li><a href="tel:+385996396931">+385 99 639 6931</a></li>
                         <li><a href="mailto:info@nmconsultant.eu">info@nmconsultant.eu</a></li>
@@ -825,8 +927,9 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <span>© 2024 NM Consultant. All rights reserved.</span>
-                <span class="lang-toggle">EN | HR</span>
+                <span data-lang="en">© 2024 NM Consultant. All rights reserved.</span>
+                <span data-lang="hr">© 2024 NM Consultant. Sva prava pridržana.</span>
+                <span class="lang-toggle" onclick="toggleLanguage()">EN | HR</span>
             </div>
         </div>
     </footer>
@@ -844,7 +947,7 @@
         const navLinks = document.getElementById('navLinks');
         
         hamburger.addEventListener('click', () => {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.classList.toggle('active');
         });
         
         // Smooth scroll
@@ -857,6 +960,32 @@
                 }
             });
         });
+
+        // Language toggle
+        function toggleLanguage() {
+            const body = document.body;
+            if (body.classList.contains('lang-en')) {
+                body.classList.remove('lang-en');
+                body.classList.add('lang-hr');
+                document.documentElement.lang = 'hr';
+                localStorage.setItem('lang', 'hr');
+            } else {
+                body.classList.remove('lang-hr');
+                body.classList.add('lang-en');
+                document.documentElement.lang = 'en';
+                localStorage.setItem('lang', 'en');
+            }
+        }
+
+        // Restore language preference
+        (function() {
+            const saved = localStorage.getItem('lang');
+            if (saved === 'hr') {
+                document.body.classList.remove('lang-en');
+                document.body.classList.add('lang-hr');
+                document.documentElement.lang = 'hr';
+            }
+        })();
     </script>
 </body>
 </html>
