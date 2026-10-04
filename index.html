@@ -663,6 +663,17 @@
                 border-bottom: 1px solid rgba(212, 167, 74, 0.1);
                 text-align: center;
             }
+            
+            /* Show both language versions stacked */
+            .nav-links li [data-lang] {
+                display: block !important;
+            }
+            
+            /* Hide the inactive language version */
+            body.lang-en .nav-links li [data-lang="hr"],
+            body.lang-hr .nav-links li [data-lang="en"] {
+                display: none !important;
+            }
 
             .nav-cta {
                 margin-top: 16px;
