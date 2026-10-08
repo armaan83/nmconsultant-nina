@@ -623,22 +623,24 @@
         @media (max-width: 768px) {
             /* Reduce header height on mobile */
             header {
-                padding: 6px 0 !important;
-                min-height: 50px !important;
+                padding: 4px 0 !important;
+                min-height: 40px !important;
             }
 
             .header-inner {
-                padding: 0 8px !important;
-                min-height: 50px !important;
+                padding: 0 12px !important;
+                min-height: 40px !important;
             }
 
             .logo {
                 font-size: 0.9rem !important;
+                gap: 8px !important;
             }
 
+            .logo-mark,
             .logo img {
-                height: 24px !important;
-                width: 24px !important;
+                height: 22px !important;
+                width: 22px !important;
             }
 
             .logo span {
@@ -652,35 +654,33 @@
                 align-items: center !important;
                 justify-content: center !important;
                 position: relative !important;
-                z-index: 1000 !important;
+                z-index: 100000 !important;
                 background: transparent !important;
                 border: none !important;
-                padding: 10px !important;
+                padding: 4px !important;
                 margin: 0 !important;
-                gap: 5px !important;
-                min-width: 44px !important;
-                min-height: 44px !important;
+                gap: 3px !important;
+                min-width: 36px !important;
+                min-height: 36px !important;
             }
 
             .hamburger span {
                 display: block !important;
-                width: 32px !important;
-                height: 4px !important;
+                width: 22px !important;
+                height: 2px !important;
                 background: white !important;
-                margin: 6px 0 !important;
+                margin: 2px 0 !important;
                 border-radius: 2px !important;
                 transition: all 0.3s ease !important;
             }
 
             .hamburger.active span {
-                display: none !important;
-            }
-            .hamburger.active::after {
-                content: '✕' !important;
                 display: block !important;
-                font-size: 28px !important;
-                color: white !important;
-                line-height: 1 !important;
+            }
+
+            .hamburger.active::after {
+                content: none !important;
+                display: none !important;
             }
 
             .nav-links {
