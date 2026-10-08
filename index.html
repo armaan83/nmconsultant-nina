@@ -625,6 +625,7 @@
             header {
                 padding: 4px 0 !important;
                 min-height: 40px !important;
+                z-index: 99999 !important; /* Ensure header floats above full-screen overlay */
             }
 
             .header-inner {
@@ -659,9 +660,10 @@
                 border: none !important;
                 padding: 4px !important;
                 margin: 0 !important;
-                gap: 3px !important;
+                gap: 0px !important;
                 min-width: 36px !important;
                 min-height: 36px !important;
+                cursor: pointer !important;
             }
 
             .hamburger span {
@@ -671,11 +673,24 @@
                 background: white !important;
                 margin: 2px 0 !important;
                 border-radius: 2px !important;
-                transition: all 0.3s ease !important;
+                transition: all 0.3s ease-in-out !important;
+                transform-origin: center !important;
             }
 
-            .hamburger.active span {
-                display: block !important;
+            /* Transform 3 lines into a clean 'X' close icon when menu is active */
+            .hamburger.active span:nth-child(1) {
+                transform: translateY(6px) rotate(45deg) !important;
+                background: var(--gold) !important;
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0 !important;
+                transform: scaleX(0) !important;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: translateY(-6px) rotate(-45deg) !important;
+                background: var(--gold) !important;
             }
 
             .hamburger.active::after {
@@ -692,12 +707,13 @@
                 bottom: 0 !important;
                 width: 100vw !important;
                 height: 100vh !important;
-                background: rgba(11, 26, 47, 1) !important;
+                background: rgba(11, 26, 47, 0.98) !important;
+                backdrop-filter: blur(15px) !important;
                 flex-direction: column !important;
                 justify-content: center !important;
                 align-items: center !important;
                 padding: 10px !important;
-                z-index: 99999 !important;
+                z-index: 99990 !important; /* Kept behind header & hamburger 'X' button */
                 overflow-y: auto !important;
             }
 
